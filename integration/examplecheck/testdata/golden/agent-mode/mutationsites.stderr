@@ -1,0 +1,5 @@
+ERROR: [mutationsites] mutationsites failed
+Fix: reduce mutation site count by splitting large files
+Hint: rule of thumb: split by theme, move at least 30% of code out
+mutationsites failed: Files with more than 1 mutation sites (rule: split by theme, move >=30% of code out):
+     4  mutation_fail.go

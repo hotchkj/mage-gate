@@ -1,0 +1,7 @@
+ERROR: [test] test failed
+Fix: fix the failing test(s) identified in the output below
+Hint: run the failing test in verbose mode to see detailed output
+test failed: go test: go: exit status 1; stdout={"Action":"start","Package":"example.com/testfail"}
+{"Action":"output","Package":"example.com/testfail","Test":"TestAlwaysFails","Output":"--- FAIL: TestAlwaysFails (0.00s)\n"}
+{"Action":"fail","Package":"example.com/testfail","Test":"TestAlwaysFails","Elapsed":0}
+{"Action":"fail","Package":"example.com/testfail","Elapsed":0}

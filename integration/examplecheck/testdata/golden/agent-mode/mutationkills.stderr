@@ -1,0 +1,4 @@
+ERROR: [mutationkills] mutationkills failed: no killed or lived mutations to evaluate kill rate
+Fix: improve test coverage or add tests that kill surviving mutations
+Hint: focus on mutations marked as LIVED - these indicate gaps in test coverage
+

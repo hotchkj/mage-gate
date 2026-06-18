@@ -1,0 +1,5 @@
+ERROR: [deadcode] deadcode failed
+Fix: remove or reference the unreachable function(s)
+Hint: if the function is intentional public API, add it to the deadcode roots build tag
+deadcode failed: unreachable functions detected
+deadcode.go:9:6: unreachable func: unreachableFunctionFixture

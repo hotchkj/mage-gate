@@ -1,0 +1,5 @@
+ERROR: [lint] lint failed
+Fix: address the lint findings in the output below
+Hint: re-run the lint step in isolation to see full output
+lint failed: run unit lint: golangci-lint: exit status 1; stdout=lint_fail.go:9:13: Error return value of `fmt.Fprintf` is not checked (errcheck)
+fmt.Fprintf(io.Discard, "lint failure fixture")

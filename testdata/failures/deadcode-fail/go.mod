@@ -1,0 +1,3 @@
+module example.com/deadcodefail
+
+go 1.25.0

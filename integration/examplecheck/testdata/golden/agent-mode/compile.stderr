@@ -1,0 +1,5 @@
+ERROR: [compile] compile failed
+Fix: resolve the compilation error(s) in the output below
+Hint: check the file and line numbers in the error output
+compile failed: go build: go: exit status 1; stdout=; stderr=# example.com/buildfail
+./broken.go:4:9: undefined: doesNotCompile

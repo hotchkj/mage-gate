@@ -1,0 +1,2 @@
+example.com/fixture/testdata/example/sample.go:1:		Func		10.0%
+total: (statements) 10.0%

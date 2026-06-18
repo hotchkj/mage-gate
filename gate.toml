@@ -1,0 +1,62 @@
+# Repo-local gate policy for mage-gate itself (see magefiles/magefile.go).
+#
+# [quality_scope] — which code counts as the production/scoring boundary for coverage %,
+# CRAP, and mutation (exclude = slash-delimited import-path segments on import paths).
+#
+# This is not "which tests run": `go test` still uses packages = "./...", so BDD in
+# ./features still runs and still exercises gate code. Exclude only removes matching
+# packages from the *instrumented* coverpkg set — harness code (e.g. features) is a
+# contributor of execution, not part of "lines we measure toward the threshold."
+# Raw `go test -coverprofile` without a scoped -coverpkg list is a different
+# (often lower) total than the gate's coverage step; trust the gate/mage-reported %.
+#
+# [unittests] — primary coverage-bearing `go test` (feeds duration, coverage, CRAP).
+#
+# [integrationtests] — optional second `go test` in the same gate, no merged coverage.
+# Options (shuffle, args) are independent of [unittests].
+#
+# [gremlins] — shared `tool_spec` for MutationSites and MutationKills (single pin, both steps).
+#
+# [lint].custom_gcl requires [lint].custom_lint_tool_spec to pin the custom builder.
+# Optional per-tool argv: [lint].args, [crap].args, [gremlins].args, [markdownlint].args (see magefiles/gate_options.go).
+# Numeric caps live under [thresholds] (duration_max, mutation_sites_max, optional mutation_coverage_min).
+
+[thresholds]
+coverage_min = 90.0
+crap_max = 8
+duration_max = 3.5
+mutation_sites_max = 50
+mutation_coverage_min = 90
+mutation_kills_min_rate = 90
+
+[lint]
+config = ".golangci.yml"
+tool_spec = "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.10.1"
+
+[quality_scope]
+packages = "./..."
+tags = ["mage"]
+exclude = ["cmdtest", "features", "gatetest", "integration", "testdata"]
+test_file_patterns = ["*_test.go"]
+
+[deadcode]
+args = ["-test", "-tags=qgdcroots_f4c8e91b3d7042a6b5c1e8f9037d2a61"]
+tool_spec = "golang.org/x/tools/cmd/deadcode@v0.31.0"
+
+[markdownlint]
+tool_spec = "github.com/shinagawa-web/gomarklint/v3@v3.2.3"
+args = ["--config", ".gomarklint.json"]
+
+[crap]
+tool_spec = "github.com/fzipp/gocyclo/cmd/gocyclo@v0.6.0"
+
+[gremlins]
+tool_spec = "github.com/hotchkj/gremlins/cmd/gremlins@v0.6.1-pre.1"
+
+[unittests]
+shuffle = true
+
+[integrationtests]
+packages = "./integration/..."
+tags = "integration"
+shuffle = false

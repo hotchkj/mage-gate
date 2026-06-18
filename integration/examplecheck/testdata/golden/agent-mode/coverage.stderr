@@ -1,0 +1,5 @@
+ERROR: [coverage] coverage 0.0% (required >= 90.0%)
+Fix: add tests to increase coverage to the required minimum
+Hint: use go tool cover -func on the coverage profile to find uncovered functions
+Worst coverage files:
+  0.0%  coverage-fail/coverage_fail.go (0/1 statements covered)
