@@ -1,0 +1,36 @@
+# Lint and test on push/PR. Module root is repo root (go.mod at top level).
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - release/**
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: quality gate (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+          cache: true
+          cache-dependency-path: go.mod
+
+      - name: run full quality gate
+        run: go run github.com/magefile/mage@v1.17.0 gate

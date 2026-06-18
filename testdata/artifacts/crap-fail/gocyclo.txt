@@ -1,0 +1,1 @@
+20 fixture Func testdata/example/sample.go:1:1

@@ -1,0 +1,6 @@
+ERROR: [mutationcoverage] mutationcoverage failed: mutation coverage 0.0% below threshold 90% (0 of 4 mutants covered; 4 not covered by test profile)
+Fix: expand the go test coverage profile (coverpkg) so more mutation points are considered covered
+Hint: NOT_COVERED mutants are outside the profile Gremlins used; improve line coverage in scoped packages
+Worst coverage files:
+  0.0%  mutation_fail.go (4/4 not covered)
+

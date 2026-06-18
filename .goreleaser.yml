@@ -1,0 +1,8 @@
+# Library module: v* tags drive `go get`. GoReleaser only produces the GitHub
+# Release and changelog — no binaries (this module has no cmd/).
+version: 2
+
+project_name: mage-gate
+
+builds:
+  - skip: true

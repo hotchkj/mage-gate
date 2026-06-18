@@ -1,0 +1,7 @@
+{
+  "include": ["."],
+  "ignore": [],
+  "rules": {
+    "heading-level": { "severity": "error", "minLevel": 1 }
+  }
+}

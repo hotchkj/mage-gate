@@ -1,0 +1,17 @@
+# Default
+* text=auto
+
+# Windows batch scripts: keep CRLF.
+*.bat text eol=crlf
+
+# Explicitly mark known text types (backup if auto-detection misclassifies).
+# Go sources: force LF in repo and on checkout so formatters (gofumpt) match CI on all OSes.
+*.go text eol=lf
+*.md text
+*.yml text
+*.yaml text
+*.sh text
+*.json text
+Dockerfile text
+.gitignore text
+.env.example text

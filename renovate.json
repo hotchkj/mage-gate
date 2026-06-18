@@ -1,0 +1,54 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "dependencyDashboard": true,
+  "separateMajorMinor": true,
+  "constraintsFiltering": "strict",
+  "env": {
+    "GOPRIVATE": "github.com/hotchkj/*",
+    "GONOPROXY": "github.com/hotchkj/*",
+    "GONOSUMDB": "github.com/hotchkj/*"
+  },
+  "postUpdateOptions": ["gomodTidy"],
+  "packageRules": [
+    {
+      "description": "Do not auto-bump the minimum Go version directive",
+      "matchManagers": ["gomod"],
+      "matchDepNames": ["go"],
+      "matchDepTypes": ["golang"],
+      "enabled": false
+    },
+    {
+      "description": "Internal private library — review updates explicitly",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["github.com/hotchkj/mage-gate"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Go module path / tag major bumps need explicit review",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "GitHub Actions major tag bumps need explicit review",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Label golang.org/x minor/patch bumps for extra review",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["golang.org/x/**"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "addLabels": ["go-x-module"]
+    },
+    {
+      "description": "Label v0.x tagged module minor/patch bumps for extra review",
+      "matchManagers": ["gomod"],
+      "matchCurrentValue": "/^0\\./",
+      "matchUpdateTypes": ["minor", "patch"],
+      "addLabels": ["go-v0-module"]
+    }
+  ]
+}

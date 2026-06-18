@@ -1,0 +1,5 @@
+ERROR: [duration] duration failed
+Fix: optimize or split the slow tests listed below
+Hint: check for sleeps, network calls, expensive setup, or oversized grouped subtests in the slow tests
+duration failed: Tests with duration > 0.001s (required max):
+duration-fail.TestSlow

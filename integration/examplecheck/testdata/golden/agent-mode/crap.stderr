@@ -1,0 +1,9 @@
+ERROR: [crap] crap failed
+Fix: reduce complexity or increase test coverage for the listed functions
+Hint: CRAP = complexity^2 * (1 - coverage)^3 + complexity; either path reduces the score
+crap failed: CRAP check failed: 26 function(s) exceed threshold of 0.1
+  [CRAP offenders shown: 20]
+  crap_fail.go:ComplexFunc - CRAP=132.0 (complexity=11, coverage=0.0%)
+  crap_fail.go:TinyFn01 - CRAP=2.0 (complexity=1, coverage=0.0%)
+  crap_fail.go:TinyFn02 - CRAP=2.0 (complexity=1, coverage=0.0%)
+  ... and 6 more offender(s)
